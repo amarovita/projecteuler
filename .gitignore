@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.idea
+.vscode
+*.code-workspace
+.ipynb_checkpoints/*
