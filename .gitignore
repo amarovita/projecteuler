@@ -5,3 +5,4 @@ __pycache__/
 *.code-workspace
 .ipynb_checkpoints/*
 test.ipynb
+test.py
