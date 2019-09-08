@@ -45,7 +45,7 @@ for x in range(1,11):
 print(phi(87109))
 
 res = ratio = float('inf')
-for x in range(2, 10000000):
+for x in range(10000000, 1, -1):
     z = phi(x)
     if x/z < ratio:
         if sorted(str(x))==sorted(str(z)):
@@ -56,3 +56,8 @@ for x in range(2, 10000000):
         print(f'>>>{x:10} {res:10}', end='\r')
 print()
 print('Res: ', res)
+
+
+# >>>   9500000    9848203
+# >>>   9310000    9848203
+# >>>   8910000    9848203
