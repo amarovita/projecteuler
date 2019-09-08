@@ -4,10 +4,21 @@ from fractions import Fraction
 from primes import get_primes
 
 pr = get_primes(10000000)
+# pr = get_primes(100000)
 print('generated')
 
 def factor(d):
-    q = d ** 0.5
+    if d in pr:
+        yield d
+    else:
+        for x in pr:
+            if x > d:
+                break
+            if d % x == 0:
+                yield x
+
+def factor2(d):
+    q = (d + 1) // 2
     if d in pr:
         yield d
     else:
@@ -19,10 +30,14 @@ def factor(d):
 
 def phi(d):
     num, den = d, 1
-    for x in factor(d):
+    for x in factor2(d):
         num *= x - 1
         den *= x
     return num // den
+
+print(list(factor(87109)))
+print(list(factor2(87109)))
+
 
 for x in range(1,11):
     print(phi(x))
@@ -30,7 +45,7 @@ for x in range(1,11):
 print(phi(87109))
 
 res = ratio = float('inf')
-for x in range(9580000, 1, -1):
+for x in range(2, 10000000):
     z = phi(x)
     if x/z < ratio:
         if sorted(str(x))==sorted(str(z)):
