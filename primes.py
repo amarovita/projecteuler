@@ -32,6 +32,24 @@ def get_primes(m):
             r += 1
     return t
 
+def gen_primes(m=0):
+    t = [2, 3]
+    yield 2
+    yield 3
+    p, n, q, r = 5, 3, 9, 1
+    while not(m) or (p < m):
+        if  all(p % x for x in t[:r]):
+            t.append(p)
+            yield p
+        p += 2
+        while p>q:
+            q += n
+            n += 1
+            q += n
+        while t[r-1]<n:
+            r += 1
+    return t
+
 def prime(m=0):
     if m > 2:
         yield 2
@@ -47,7 +65,7 @@ def prime(m=0):
             n += 1
             q += n
 
-_ptable = get_primes(1000)
+# _ptable = get_primes(1000)
 
 def isprime(n, ptable=_ptable):
     if n <= ptable[-1]:
